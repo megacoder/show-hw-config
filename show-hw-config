@@ -1,0 +1,23 @@
+#!/bin/zsh
+echo -e "Host:\t$(/bin/hostname)"
+echo -e "\nDate:\t$(date)"
+if [ -x /usr/sbin/dmidecode ]; then
+	echo -e "\nBIOS:\n"
+	/usr/sbin/dmidecode -q
+fi
+if [ -x /sbin/sfdisk ]; then
+	echo -e "\nDISKS:\n"
+	/sbin/sfdisk -l
+fi
+if [ -x /sbin/lspci ]; then
+	echo -e "\nPCI BUS:\n"
+	/sbin/lspci
+fi
+if [ -x /sbin/lsusb ]; then
+	echo -e "\nUSB:\n"
+	/sbin/lsusb
+fi
+if [ -x /usr/bin/lsscsi ]; then
+	echo -e "\nSCSI:\n"
+	/usr/bin/lsscsi -d
+fi
